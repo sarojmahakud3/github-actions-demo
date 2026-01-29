@@ -10,6 +10,16 @@ jobs:
   demo-job:
     runs-on: ubuntu-latest
 
+    env:
+      APP_NAME: vprofile
+      APP_ENV: dev
+
+    steps: 
+      - name: Print environment variables
+        run: |
+          echo "App Name: $APP_NAME"
+          echo "App Environment: $APP_ENV"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
