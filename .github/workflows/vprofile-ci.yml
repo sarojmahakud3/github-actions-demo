@@ -1,6 +1,9 @@
 name: vprofile continuous integration
 
-on: []
+on:
+  push:
+    branches:
+      - main
   pull_request:
 
 jobs:
