@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-   build:
+    build:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,17 +30,17 @@ jobs:
           name: vprofile-artifact
           path: target/**.*war
 
-    deploy:
-      needs: build
-      runs-on: ubuntu-latest
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Download war artifact
-          uses: actions/download-artifact@v4
-          with:
-            name: vprofile-war
+    steps:
+      - name: Download war artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vprofile-war
 
-        - name: Simulate deployment
-          run: |
-            echo "Deploying vprofile application..."
-            ls
+      - name: Simulate deployment
+        run: |
+          echo "Deploying vprofile application..."
+          ls
