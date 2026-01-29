@@ -1,9 +1,6 @@
 name: vprofile continuous integration
 
-on: 
-  push:
-    branches:
-      - main
+on: []
   pull_request:
 
 jobs:
@@ -23,3 +20,9 @@ jobs:
       
       - name: Build with maven
         run: mvn clean install
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vprofile-artifact
+          path: target/*.jar
