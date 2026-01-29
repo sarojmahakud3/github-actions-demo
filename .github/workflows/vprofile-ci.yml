@@ -28,4 +28,3 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vprofile-artifact
-          path: target/*.jar
