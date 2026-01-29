@@ -40,6 +40,16 @@ jobs:
         with:
           name: vprofile-artifact
 
+      - name: Deploy to EC2 Tomcat
+        run: |
+          scp vprofile-artifact/*.war ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/opt/tomcat/webapps/
+          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "
+            /opt/tomcat/bin/shutdown.sh || true
+            sleep 5
+            /opt/tomcat/bin/startup.sh
+          "
+
+
       - name: Prepare SSH key
         run: |
           if [ -z "${{ secrets.EC2_HOST }}" ]; then
