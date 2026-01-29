@@ -8,11 +8,12 @@ on:
 
 jobs:
 
-  strategy:
-    matrix: 
-      node-version: [16, 18, 20]
   frontend-job:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix: 
+        node-version: [16, 18, 20]
 
     env:
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -28,7 +29,7 @@ jobs:
       - name: Use secret
         run: |
           echo "DB password is $DB_PASSWORD"
-          
+
       - name: Frontend task
         run: echo "Running frontend task..."
 
@@ -39,6 +40,9 @@ jobs:
 
   backend-job:
     runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        node-version: [16, 18, 20]
 
     env:
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
