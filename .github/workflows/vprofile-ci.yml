@@ -55,3 +55,5 @@ jobs:
             sleep 5
             /opt/tomcat/bin/startup.sh
           "
+      - name: Show file
+        run: ls -l /opt/tomcat/webapps/
