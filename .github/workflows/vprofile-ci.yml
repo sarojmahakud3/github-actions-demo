@@ -40,6 +40,22 @@ jobs:
         with:
           name: vprofile-artifact
 
+      - name: prepare SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to EC2 Tomcat
+        run: |
+          scp *.war ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/opt/tomcat/webapps/
+          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "
+            /opt/tomcat/bin/shutdown.sh || true
+            sleep 5
+            /opt/tomcat/bin/startup.sh
+          "
+
       - name: Simulate deployment
         run: |
           echo "Deploying vprofile application..."
