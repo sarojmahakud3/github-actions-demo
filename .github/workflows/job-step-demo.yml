@@ -19,10 +19,3 @@ jobs:
         run: |
           echo "App Name: $APP_NAME"
           echo "App Environment: $APP_ENV"
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: list files
-        run: echo "ls"
