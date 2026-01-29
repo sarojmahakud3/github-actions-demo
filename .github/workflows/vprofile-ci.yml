@@ -1,0 +1,25 @@
+name: vprofile continuous integration
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+   build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: setup java
+        uses: actions/setup-java@4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+      
+      - name: Build with maven
+        run: mvn clean install
