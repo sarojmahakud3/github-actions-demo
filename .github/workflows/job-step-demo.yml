@@ -12,8 +12,6 @@ jobs:
 
     env:
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-
-    env:
       APP_NAME: vprofile
       APP_ENV: dev
 
