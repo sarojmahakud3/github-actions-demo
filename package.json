@@ -1,0 +1,21 @@
+{
+  "name": "saroj",
+  "version": "1.0.0",
+  "description": "- JDK 17 or 21 - Maven 3.9 - MySQL 8",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarojmahakud3/github-actions-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sarojmahakud3/github-actions-demo/issues"
+  },
+  "homepage": "https://github.com/sarojmahakud3/github-actions-demo#readme"
+}
