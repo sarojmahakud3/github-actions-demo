@@ -29,3 +29,18 @@ jobs:
         with:
           name: vprofile-artifact
           path: target/**.*war
+
+    deploy:
+      needs: build
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Download war artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: vprofile-war
+
+        - name: Simulate deployment
+          run: |
+            echo "Deploying vprofile application..."
+            ls
